@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Modern+Antiqua&display=swap" rel="stylesheet">
+    <title>...</title>
+    <script id="gamescript" ></script>
+</head>
+
+<body onload="StartUp()">
+
+    <div id="blood_rain">
+
+    </div>
+
+
+</body>
+
+<script>
+    var src
+    var x = Math.ceil(Math.random() * 2);
+    console.log(x);
+    switch (x) {
+        case 1:
+            src = "javascript/jsgame.js";
+            break;
+        case 2:
+            src = "javascript/jsgame2.js";
+            break;
+        default:
+            src = "javascript/jsgame2.js"
+    }
+    document.getElementById("gamescript").src = src;
+
+</script>
+
+</html>

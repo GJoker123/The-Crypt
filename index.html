@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Entrance</title>
+</head>
+
+<body>
+    <audio id="intro" loop src="audio/Echoes%20of%20Time.mp3" >
+    </audio>
+    <header id="head">
+        <span style="font-size: 65px;"><i id="audio_control" class="fa fa-play" onclick="playsong()"></i></span>
+        <div  class="container">
+            
+            <h1 id="zero">I have a Question for you.</h1>
+            <h1 id="six"><strong>THE CRYPT</strong></h1>
+        </div>
+    </header>
+
+    <section id="sect">
+        <div class="container">
+            <p id="one"> Do you find yourself to be <strong><span style="color: #ffff">blessed?</span></strong></p>
+              <p id="two"> Or do you find yourself to be <strong><span style="color: red">cursed?</span></strong></p>
+            <p id="three"><strong>Regardless of your answer...</strong> To come here is to step into the unknown. To be taken somewhere... <strong>Unique.</strong> </p>
+            <p id="four">Welcome to a new world. An adventure. A to-<strong>die for</strong>-experience.</p>
+            <p id="five">Welcome to...</p>          
+            <p id="seven"><strong>Wake the left eye to <span style="color: #ffff">ascend</span>, or wake the right eye to <span style="color:  darkred">descend</span> .</strong></p>
+           <!-- <p style="font-size: 15px; display: inline-block; " class="fade">IF YOU DARE...</p> -->    
+                <div  class="eye">
+                 <img style="margin: 10px; float: left" id="eyechange2" src="images/closed_eye_for_crypt.png" alt="Closed Eye Game" onclick="eye2()">        
+            </div>
+            <div class="eye" >   
+                <img style="margin: 10px; float: right" id="eyechange" src="images/closed_eye_for_crypt.png" alt="Closed Eye Library" onclick="eye()">    
+            </div>
+        
+          
+        </div>
+    </section>
+    
+     
+
+    <script src="javascript/eye.js"></script>
+</body></html>

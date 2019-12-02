@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>The Crypt</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>The Library</h1>
+        <p>Please, pick a piece...</p>
+        <p>Savour them.</p>
+    </div>
+      <div class="container link">
+        <p><a href="index.html">Do you wish to return...</a> Or <a href="game.html">delve deeper?</a></p>
+    </div>
+    <br>
+    <div class="container">
+        <select name="horrorlist" id="HList" onchange="loadstory('writtenpieces/',testfunction,1);">
+            <option disabled hidden selected value="">Select an option</option>
+            <option name="" value="One Lonely Night.txt">One Lonely Night</option>
+            <option name=""value="Sleep.txt">What is Sleep?</option>
+            <option name="" value="A Particular Talk.txt">A Particular Talk</option>
+            <option name="" value="journey.txt">Journey</option>
+        </select>
+        <button type="button" class="HorrBox" onclick="loadstory('writtenpieces/',testfunction,2);">Search</button>
+        <input name="search" type="text" class="HorrBox" id="HInput">
+    </div> 
+    <div class="container" id="display">   
+    </div>
+    <script src="javascript/display.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

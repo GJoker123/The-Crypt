@@ -1,0 +1,215 @@
+body {
+    background-image: linear-gradient(black, black, darkred);
+    color: #ff4d4d;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 2.5em;
+
+}
+
+p {
+    font-size: 1.5rem;
+
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+
+}
+.wrapper{
+    text-align: center;
+}
+.eye {
+    height: 250px;
+    width: 40%;
+    display: inline-block;    
+}
+
+.link a {
+    text-decoration: none;
+    color: #ff4d4d;
+
+}
+
+.link a:first-child:hover {
+    color: #ffff;
+
+    transition: 0.5s;
+}
+
+.link a:last-child:hover {
+    color: #ff1a1a;
+    transition: 0.5s;
+}
+
+.HorrBox{
+    background-color: black;
+    color: darkred;
+    border: 2px dotted grey;
+    float: right;
+    font-size: 20px;
+}
+
+#intro{}
+#audio_control{}
+#display{
+    padding-top: 80px;
+    color: darksalmon;
+    width: 60%; 
+}
+
+#display p{
+    font-size: 1.2em;
+   
+}
+.fade1 p{
+    animation-name: fadein;
+    animation-fill-mode: forwards;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    opacity: 0;
+}
+.fade2 p{
+    animation-name: fadeoutV2;
+    animation-fill-mode: forwards;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    opacity: 1;
+}
+#HList {
+    background-color: black;
+    color: darkred;
+    border: 2px dotted grey;
+    float: left; 
+    font-size: 20px;
+}
+#HInput{}
+
+
+
+
+#blood_rain {
+    background-image: url(../images/joel-filipe-rG1LNUFgJhI-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+
+}
+
+#game_area {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 0;
+}
+
+#gamescript{
+    
+}
+
+@keyframes fadeoutV2{
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+
+@keyframes fadeout {
+    50% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#zero {
+    animation-name: fadeout;
+    animation-fill-mode: forwards;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+#one {
+    animation-name: fadeout;
+    animation-fill-mode: forwards;
+    animation-delay: 4s;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+#two {
+    animation-name: fadeout;
+    animation-fill-mode: forwards;
+    animation-delay: 6s;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+#three {
+    animation-name: fadeout;
+    animation-fill-mode: forwards;
+    animation-delay: 16s;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+#four {
+    animation-name: fadeout;
+    animation-fill-mode: forwards;
+    animation-delay: 24s;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+#five {
+    animation-name: fadeout;
+    animation-fill-mode: forwards;
+    animation-delay: 30s;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+#six {
+    animation-name: fadein;
+    animation-fill-mode: forwards;
+    animation-delay: 36s;
+    animation-duration: 3s;
+    opacity: 0;
+}
+
+#seven {
+    animation-name: fadeout;
+    animation-fill-mode: forwards;
+    animation-delay: 38s;
+    animation-duration: 10s;
+    opacity: 0;
+}
+
+#eight {
+    animation-name: fadein;
+    animation-fill-mode: forwards;
+    animation-delay: 40s;
+    animation-duration: 10s;
+    opacity: 0;
+}
