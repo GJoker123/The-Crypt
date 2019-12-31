@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Modern+Antiqua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>...</title>
-    <script id="gamescript" ></script>
+    <script id="gamescript"></script>
 </head>
 
-<body onload="StartUp()">
-
-    <div id="blood_rain">
-
+<body>
+    <audio id="background" loop>
+    </audio>
+    <audio id="deatheffect" src="audio/Dart.mp3"></audio>
+    <audio id="stareffect" src="audio/Scary-Titus_Calen-1449371204.mp3"></audio>
+    <div id="blood_rain" style="text-align: center;">     
+            <span style="font-size: 100px; "><i id="play_game" class="fa fa-play" onclick="StartUp()"></i></span>
     </div>
 
 

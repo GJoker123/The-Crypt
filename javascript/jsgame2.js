@@ -12,8 +12,11 @@ var MonsterPos = new Array();
 var StarPos = new Array();
 var x = 0; // counter
 var i = 0; // score
-var a = 100; // Monster Height
-var b = 100; // Monster Width
+var a = 200; // Monster Height
+var b = 200; // Monster Width
+var timer = 0;
+var addtimer = 1000
+var warningtext = "STAY STILL";
 var SpeedA = 25; // Speed of Monster
 var SpeedB = 25; // Speed of Monster
 var imagesOK = 0;
@@ -25,6 +28,7 @@ MyGame.addEventListener("mousemove", FindMousePos, false);
 
 // initalise the canva id and height/width and pre-load images
 function StartUp() {
+    document.getElementById("play_game").style.visibility = "hidden";
     var GameArea = document.querySelector("body").appendChild(MyGame);
     GameArea.height = window.innerHeight;
     GameArea.width = window.innerWidth;
@@ -50,10 +54,10 @@ function clear() {
 function FindMousePos(e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
-
 }
 
 function Intro() {
+    document.body.style.cursor = "none";
     ctx.font = "30px Modern Antiqua";
     ctx.fillStyle = ("#ffffff");
     setTimeout(function () {
@@ -81,9 +85,10 @@ function Intro() {
         ctx.fillText("2. Be still when there is none.", window.innerWidth / 2, window.innerHeight / 2);
         setTimeout(function () {
             clear();
+            document.getElementById("background").src = "audio/human-heartbeat-daniel_simon.mp3";
             Switchbg();
             FindMousePos;
-            CoordX = RandomSpawn(false);
+            CoordX = RandomSpawn(true);
             CoordY = RandomSpawn(false);
             StoreCoords(CoordX, CoordY, MonsterPos);
 
@@ -119,18 +124,22 @@ function ImageDraw(x, PosX, PosY, height, width) {
 }
 
 function Switchbg() {
-
+    document.body.style.cursor = "default"
     var switchtimes = Math.floor(Math.random() * 6000) + 1000;
-    var warning = switchtimes - 500;
+    var warning = switchtimes - 1000;
     document.body.style.backgroundColor = "grey";
+    document.getElementById("background").volume = 1.0
+    document.getElementById("background").play()
+    timer = Math.ceil(Math.random() * addtimer) + 1000
     PopUp()
     if (GameStop == false) {
         setTimeout(function () {
+            document.getElementById("background").volume = 0.5
             ctx.font = "30px Modern Antiqua";
             ctx.fillStyle = ("#ffffff");
-            ctx.textBaseline = "middle";
-            ctx.textAlign = "center";
-            ctx.fillText("IT'S COMING", window.innerWidth / 2, window.innerHeight / 2);
+            ctx.textBaseline = "bottom";
+            ctx.textAlign = "top";
+            ctx.fillText(warningtext, window.innerWidth / 4, window.innerHeight / 4);
         }, warning)
     }
 
@@ -139,25 +148,32 @@ function Switchbg() {
             monsterswitch = true;
             currentXposition = mouseX
             currentYposition = mouseY
+            document.body.style.cursor = "none";
             clear();
             document.body.style.backgroundColor = "black";
+            document.getElementById("background").pause()
             setTimeout(function () {
                 clear()
                 monsterswitch = false;
                 Switchbg();
-            }, 2000)
+            }, timer)
         }, switchtimes);
     };
 }
 
 
+// Make the spawn point of enemies and stars random
 function RandomSpawn(boolean) {
-    if (boolean = true) {
-        return Math.floor(Math.random() * -800) + 800;
-    } else {
-        return Math.floor(Math.random() * -900) + 900;
-    }
+    switch (boolean) {
+        case (true):
+            return Math.floor(Math.random() * 1800); // x coordinate
+            break;
+        case (false):
+            return Math.floor(Math.random() * 901); // y coordinate
+            break;
 
+
+    }
 }
 
 function StoreCoords(xc, yc, array) {
@@ -177,15 +193,30 @@ function Scollision(objX, objw, objY, objh) {
     if (mouseX >= objX && mouseX <= objX + objw && mouseY >= objY && mouseY <= objY + objh) {
         clear()
         CoordX = RandomSpawn(true);
-        CoordY = RandomSpawn(true);
+        CoordY = RandomSpawn(false);
         Star(CoordX, CoordY);
         i++;
         ctx.font = "30px Modern Antiqua";
         ctx.fillStyle = ("#ffffff");
         ctx.textBaseline = "middle";
         ctx.textAlign = "center";
-        ctx.fillText("Score: " + i , window.innerWidth / 2, window.innerHeight / 2);
+        ctx.fillText("Score: " + i, window.innerWidth / 2, window.innerHeight / 2);
+        IncreaseDifficulty()
     }
+}
+
+function IncreaseDifficulty() {
+    switch (i) {
+        case 20:
+            addtimer = 2000;
+            warningtext = "IT'S GETTING RESTLESS.";
+            break;
+        case 40:
+            addtimer = 4000;
+            warningtext = "THE EYE GAZES ON THE AYBSS.";
+            break;
+    }
+    increaseDiff = true;
 }
 
 function Mcollision(objX, objw, objY, objh) {
@@ -193,6 +224,9 @@ function Mcollision(objX, objw, objY, objh) {
         clear()
         document.body.style.cursor = "none";
         GameStop = true;
+        document.getElementById("background").pause()
+        document.getElementById("deatheffect").src = "audio/dart.mp3";
+        document.getElementById("deatheffect").play()
         Game_Over();
     }
 }
@@ -205,6 +239,8 @@ function PopUp() {
         }
         if (monsterswitch == true) {
             clear()
+
+
             setTimeout(function () {
                 if (mouseX != currentXposition && mouseY != currentYposition) {
                     x = 1
@@ -251,20 +287,31 @@ function Game_Over() {
         ctx.textAlign = "center";
         ctx.fillText("You broke the rules.", window.innerWidth / 2, window.innerHeight / 2);
     }, 2000)
-    setTimeout(function () {
-        clear();
-        ctx.textBaseline = "middle";
-        ctx.textAlign = "center";
-        ctx.fillText("You moved blindly in the darkness.", window.innerWidth / 2, window.innerHeight / 2);
-    }, 4000)
-    setTimeout(function () {
-        clear();
-        ctx.textBaseline = "middle";
-        ctx.textAlign = "center";
-        ctx.fillText("I will be merciful this time. Begone.", window.innerWidth / 2, window.innerHeight / 2);
-    }, 6000)
-    setTimeout(function () {
-        window.location.replace("story.html");
-    }, 8000);
+    if (i >= 40) {
+        setTimeout(function () {
+            clear();
+            ctx.textBaseline = "middle";
+            ctx.textAlign = "center";
+            ctx.fillText("4-15 25-15-21 23-9-19-8 20-15 19-5-5 20-8-5 15-20-8-5-18 19-9-4-5", window.innerWidth / 2, window.innerHeight / 2);
+        }, 4000)
+    } else {
+        setTimeout(function () {
+            clear();
+            ctx.textBaseline = "middle";
+            ctx.textAlign = "center";
+            ctx.fillText("You was caught in the darkness.", window.innerWidth / 2, window.innerHeight / 2);
+        }, 4000)
+        setTimeout(function () {
+            clear();
+            ctx.textBaseline = "middle";
+            ctx.textAlign = "center";
+            ctx.fillText("I will be merciful this time. Begone.", window.innerWidth / 2, window.innerHeight / 2);
+        }, 6000)
+    }
+        setTimeout(function () {
+            window.location.replace("story.html");
+        }, 8000);
+    
+
 
 }
