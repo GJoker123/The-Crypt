@@ -289,7 +289,7 @@ function Game_Over() {
             clear();
             ctx.textBaseline = "middle";
             ctx.textAlign = "center";
-            ctx.fillText('20-8-5 1-2-25-19-19 2-5-3-11-15-14-19', window.innerWidth / 2, window.innerHeight / 2);
+            ctx.fillText('4 Hs$}sy${mwl$xs$wii$xli$sxliv$wmhiC', window.innerWidth / 2, window.innerHeight / 2);
         }, 4000)
     }
 

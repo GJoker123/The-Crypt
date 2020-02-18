@@ -292,7 +292,7 @@ function Game_Over() {
             clear();
             ctx.textBaseline = "middle";
             ctx.textAlign = "center";
-            ctx.fillText("4-15 25-15-21 23-9-19-8 20-15 19-5-5 20-8-5 15-20-8-5-18 19-9-4-5", window.innerWidth / 2, window.innerHeight / 2);
+            ctx.fillText("O&igt-z&ykk4&Nkrv&sk4 6", window.innerWidth / 2, window.innerHeight / 2);
         }, 4000)
     } else {
         setTimeout(function () {
