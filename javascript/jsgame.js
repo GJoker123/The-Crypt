@@ -26,10 +26,18 @@ MyGame.addEventListener("mousemove", FindMousePos, false);
 // initalise the canva id and height/width and pre-load images
 function StartUp() {
     document.getElementById("play_game").style.visibility = "hidden";
+    document.getElementById("footertext").style.visibility = "hidden";
+    //var GameArea = document.querySelector("body").appendChild(MyGame);
     var GameArea = document.querySelector("body").appendChild(MyGame);
     GameArea.height = window.innerHeight;
     GameArea.width = window.innerWidth;
     GameArea.id = "game_area"
+    //alert(document.getElementById("game_area").clientHeight);
+    //alert(document.getElementById("game_area").clientWidth);
+
+    //GameArea.height = window.innerHeight;
+    //GameArea.width = window.innerWidth;
+
     // put the paths to my images here
     imageURLs.push("images/game_monsterNo1.png");
     imageURLs.push("images/game_monsterNo2.png");
@@ -39,8 +47,8 @@ function StartUp() {
     loadAllImages(ImageDraw)
     Intro();
     setInterval(function () {
-        CoordX = RandomSpawn(true);
-        CoordY = RandomSpawn(false);
+        CoordX = RandomSpawn(true);       
+        CoordY = RandomSpawn(false);       
     }, chase);
     setTimeout(function () {
         CoordX = RandomSpawn(true);
@@ -117,10 +125,10 @@ function FindMousePos(e) {
 function RandomSpawn(boolean) {
     switch (boolean) {
         case (true):
-            return Math.floor(Math.random() * 1800); // x coordinate
+            return Math.floor(Math.random() * 1500); // x coordinate            
             break;
         case (false):
-            return Math.floor(Math.random() * 901); // y coordinate
+            return Math.floor(Math.random() * 801); // y coordinate           
             break;
 
 
@@ -164,7 +172,7 @@ function Movement() {
     ctx.font = "30px Modern Antiqua";
     ctx.fillStyle = ("#ffffff");
     ctx.textBaseline = "middle";
-    ctx.textAlign = "top";
+    ctx.textAlign = "center";
     ctx.fillText(score + i, window.innerWidth / 2, window.innerHeight / 2);
     //now move
     MonsterPos[0].x += dx;
@@ -175,8 +183,8 @@ function Movement() {
     ImageDraw(x, MonsterPos[0].x, MonsterPos[0].y, a, b);
 
     if (increaseDiff == true) {
-        a += 10;
-        b += 10;
+        a += 5;
+        b += 5;
         increaseDiff = false;
     }
 
@@ -203,8 +211,8 @@ function IncreaseDifficulty() {
             SpeedB = 7;
             break;
         case 20:
-            SpeedA = 8;
-            SpeedB = 8;
+            SpeedA = 5;
+            SpeedB = 5;
             chase = 6000;
             document.getElementById("background").pause();
             document.getElementById("background").volume = 0.2;
@@ -226,11 +234,11 @@ function IncreaseDifficulty() {
             break;
 
         case 60:
-            score = "20-8-5 1-2-25-19-19 2-5-3-11-15-14-19";
+            score = "4 Hs$}sy${mwl$xs$wii$xli$sxliv$wmhiC";
             break;
 
         case 70:
-            score = "ScOrE: "
+            score = "ScOrE: 4 Hs$}sy${mwl$xs$wii$xli$sxliv$wmhiC "
             break;
     }
     increaseDiff = true;

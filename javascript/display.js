@@ -1,4 +1,8 @@
 document.getElementById("accompany").src = "audio/Echoes%20of%20Time.mp3";
+var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 800,
+    speedAsDuration: true
+});
 
 function playsong() {
 
@@ -20,18 +24,26 @@ function loadstory(url, Tfunction, x) {
     /*alert("Request has been called"); */
     if (x == 1) {
         url = url.concat(document.getElementById("HList").value);
-        
+
     } else if (x == 2) {
-        url = url.concat(document.getElementById("HInput").value);
-        url = url.concat(".txt");
-        alert(url)
-        /*url = url.toLowerCase(url);*/
+
+        if (document.getElementById("HInput").value == "") {
+            alert("Invalid")
+        } else {
+
+            url = url.concat(document.getElementById("HInput").value);
+            url = url.concat(".txt");
+            document.getElementById("HList").value = (document.getElementById("HInput").value + ".txt");
+
+            /*url = url.toLowerCase(url);*/
+        }
+
     } else {
         alert("Invalid Choice.");
 
     }
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200 ) {
+        if (this.readyState == 4 && this.status == 200) {
             document.getElementById("audio_control").className = "fa fa-pause";
             switch (url) {
                 case "writtenpieces/One Lonely Night.txt":
@@ -54,7 +66,7 @@ function loadstory(url, Tfunction, x) {
                     document.getElementById("accompany").src = "audio/Purple Planet Music - Creepy Hollow 2823A3229.mp3";
                     document.getElementById("accompany").play();
                     break;
-               
+
             }
             Tfunction(this);
         }
@@ -65,7 +77,6 @@ function loadstory(url, Tfunction, x) {
 };
 
 function testfunction(xhttp, x) {
-
     if (document.getElementById("display").className == "container") {
         document.getElementById("display").className += " fade1";
         document.getElementById("display").innerHTML = (xhttp.responseText);

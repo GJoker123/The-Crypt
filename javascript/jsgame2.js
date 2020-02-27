@@ -29,6 +29,7 @@ MyGame.addEventListener("mousemove", FindMousePos, false);
 // initalise the canva id and height/width and pre-load images
 function StartUp() {
     document.getElementById("play_game").style.visibility = "hidden";
+    document.getElementById("footertext").style.visibility = "hidden";
     var GameArea = document.querySelector("body").appendChild(MyGame);
     GameArea.height = window.innerHeight;
     GameArea.width = window.innerWidth;
@@ -166,10 +167,10 @@ function Switchbg() {
 function RandomSpawn(boolean) {
     switch (boolean) {
         case (true):
-            return Math.floor(Math.random() * 1800); // x coordinate
+            return Math.floor(Math.random() * 1500); // x coordinate
             break;
         case (false):
-            return Math.floor(Math.random() * 901); // y coordinate
+            return Math.floor(Math.random() * 801); // y coordinate
             break;
 
 
@@ -214,6 +215,10 @@ function IncreaseDifficulty() {
         case 40:
             addtimer = 4000;
             warningtext = "THE EYE GAZES ON THE AYBSS.";
+            break;
+        case 50:
+            addtimer = 4000;
+            warningtext = "O&igt-z&ykk4&Nkrv&sk4 6";
             break;
     }
     increaseDiff = true;
